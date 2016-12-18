@@ -1,6 +1,8 @@
 package mobile.kikoololasv.fr.smartnotif
 
 interface SmartNotifsRepository{
-    fun getSmartNotifs()
+
+    @Throws(GetSmartNotifsError::class)
+    fun getSmartNotifs() : List<SmartNotif>
 }
 
