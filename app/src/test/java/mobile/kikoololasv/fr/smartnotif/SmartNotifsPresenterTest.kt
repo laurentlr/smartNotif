@@ -19,9 +19,10 @@ class SmartNotifsPresenterTest {
         val captor = argumentCaptor<List<SmartNotifViewModel>>()
         verify(view).displaySmartNotifs(captor.capture())
 
-        assertThat(captor.firstValue.size).isEqualTo(smartNotifs.size)
+        var firstValue = captor.firstValue
+        assertThat(firstValue.size).isEqualTo(smartNotifs.size)
 
-        for ((index, value) in captor.firstValue.withIndex()) {
+        for ((index, value) in firstValue.withIndex()) {
             assertThat(smartNotifs[index].title).isEqualTo(value.title)
         }
 
