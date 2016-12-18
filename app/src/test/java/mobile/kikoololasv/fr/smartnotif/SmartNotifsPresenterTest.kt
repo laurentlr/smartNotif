@@ -15,13 +15,14 @@ class SmartNotifsPresenterTest {
 
         val smartNotifs: List<SmartNotif> = listOf(SmartNotif(title = "title"), SmartNotif(title = "title"))
         presenter.presentSmartNotifs(smartNotifs)
-        smartNotifs.map { x -> SmartNotifViewModel(x) }
+        smartNotifs.map(::SmartNotifViewModel)
         val captor = argumentCaptor<List<SmartNotifViewModel>>()
         verify(view).displaySmartNotifs(captor.capture())
 
         assertThat(captor.firstValue.size).isEqualTo(smartNotifs.size)
+
         for ((index, value) in captor.firstValue.withIndex()) {
-            assertThat(smartNotifs.get(index).title).isEqualTo(value.title)
+            assertThat(smartNotifs[index].title).isEqualTo(value.title)
         }
 
     }
