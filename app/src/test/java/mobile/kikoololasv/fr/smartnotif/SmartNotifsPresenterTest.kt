@@ -9,12 +9,12 @@ import org.junit.Test
 class SmartNotifsPresenterTest {
 
     @Test
-    fun presentSmartNotifs() {
+    fun onSuccess() {
         val view: SmartNotifsView = mock()
         val presenter = SmartNotifsPresenter(view)
 
         val smartNotifs: List<SmartNotif> = listOf(SmartNotif(title = "title"), SmartNotif(title = "title"))
-        presenter.presentSmartNotifs(smartNotifs)
+        presenter.onSuccess(smartNotifs)
         smartNotifs.map(::SmartNotifViewModel)
         val captor = argumentCaptor<List<SmartNotifViewModel>>()
         verify(view).displaySmartNotifs(captor.capture())
