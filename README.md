@@ -1,6 +1,8 @@
-# smartNotifs
---Progressive dev feedback
+# SmartNotifs
+Progressive dev feedback
+----------------------
 1. If you use kotlin, use mock-kotlin for your mocks
+2. Lint and retrolambda is not stable, you have to use a specific lombok lib (https://github.com/evant/gradle-retrolambda/issues/96)
 
 PostFix CodeComplexion
 ----------------------
