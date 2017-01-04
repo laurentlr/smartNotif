@@ -2,11 +2,8 @@ package mobile.kikoololasv.fr.smartnotif
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.Rule
 import org.junit.Test
 import org.mockito.BDDMockito.given
-import org.mockito.Mock
 
 
 class SmartNotifUseCaseTest {
@@ -15,30 +12,31 @@ class SmartNotifUseCaseTest {
 
     private lateinit var smartNotifUseCase: SmartNotifUseCase
 
-    private val  presenter: SmartNotifCallBack = mock()
+    private val smartNotifCallBack: SmartNotifCallBack = mock()
 
     @Test
     fun getSmartNotifs() {
-        smartNotifUseCase =  SmartNotifUseCase(repo,presenter)
-        var list = listOf(SmartNotif("title"))
+        smartNotifUseCase =  SmartNotifUseCase(repo, smartNotifCallBack)
+
+        var list = listOf(SmartNotif(title = "Go buy Omelette du fromage",creationDate = 1482239496000L,smartNotifStatus = SmartNotifStatus.PENDING,smartNotifevent = ScheduledEvent(date = 1482585096000L)))
         given(repo.getSmartNotifs()).willReturn(list)
 
         smartNotifUseCase.getSmartNotifs()
 
         verify(repo).getSmartNotifs()
-        verify(presenter).onSuccess(list)
+        verify(smartNotifCallBack).onSuccess(list)
     }
 
 
     @Test
     fun getSmartNotifsWhenError() {
-        smartNotifUseCase =  SmartNotifUseCase(repo,presenter)
+        smartNotifUseCase =  SmartNotifUseCase(repo, smartNotifCallBack)
         given(repo.getSmartNotifs()).willThrow(GetSmartNotifsError())
 
         smartNotifUseCase.getSmartNotifs()
 
         verify(repo).getSmartNotifs()
-        verify(presenter).onError()
+        verify(smartNotifCallBack).onError()
 
 
     }

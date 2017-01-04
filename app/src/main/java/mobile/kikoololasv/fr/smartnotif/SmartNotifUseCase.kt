@@ -1,6 +1,6 @@
 package mobile.kikoololasv.fr.smartnotif
 
-class SmartNotifUseCase(val repository: SmartNotifsRepository, val callback: SmartNotifCallBack) {
+class SmartNotifUseCase(var repository: SmartNotifsRepository, val callback: SmartNotifCallBack) {
 
     fun getSmartNotifs(){
         try {

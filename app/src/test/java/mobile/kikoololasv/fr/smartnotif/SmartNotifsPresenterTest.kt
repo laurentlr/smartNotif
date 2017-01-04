@@ -13,9 +13,9 @@ class SmartNotifsPresenterTest {
         val view: SmartNotifsView = mock()
         val presenter = SmartNotifsPresenter(view)
 
-        val smartNotifs: List<SmartNotif> = listOf(SmartNotif(title = "title"), SmartNotif(title = "title"))
+        var smartNotifs = listOf(SmartNotif(title = "Go buy Omelette du fromage",creationDate = 1482239496000L,smartNotifStatus = SmartNotifStatus.PENDING,smartNotifevent = ScheduledEvent(date = 1482585096000L)))
         presenter.onSuccess(smartNotifs)
-        smartNotifs.map(::SmartNotifViewModel)
+
         val captor = argumentCaptor<List<SmartNotifViewModel>>()
         verify(view).displaySmartNotifs(captor.capture())
 
@@ -25,6 +25,5 @@ class SmartNotifsPresenterTest {
         for ((index, value) in firstValue.withIndex()) {
             assertThat(smartNotifs[index].title).isEqualTo(value.title)
         }
-
     }
 }
