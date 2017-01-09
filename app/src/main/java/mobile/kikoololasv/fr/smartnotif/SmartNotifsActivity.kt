@@ -2,6 +2,7 @@ package mobile.kikoololasv.fr.smartnotif
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import org.jetbrains.anko.*
 import javax.inject.Inject
 
 class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
@@ -10,10 +11,24 @@ class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_smart_notifs)
+        //setContentView(R.layout.activity_smart_notifs)
         //smartNotifsRecyclerView.adapter = SmartNotifsAdapter()
 
-        SMApplication.GRAPH.inject(this)
+        verticalLayout {
+            padding = dip(30)
+            editText {
+                hint = "Name"
+                textSize = 24f
+            }
+            editText {
+                hint = "Password"
+                textSize = 24f
+            }
+            button("Login") {
+                textSize = 26f
+            }
+        }
+        //SMApplication.GRAPH.inject(this)
 
     }
 

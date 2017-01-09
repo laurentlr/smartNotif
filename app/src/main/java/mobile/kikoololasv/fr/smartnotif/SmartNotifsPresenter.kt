@@ -3,11 +3,11 @@ package mobile.kikoololasv.fr.smartnotif
 import android.os.Handler
 import javax.inject.Inject
 
-class SmartNotifsPresenter @Inject constructor(var smartNotifUseCase: SmartNotifUseCase, val smartNotifsView: SmartNotifsView) : SmartNotifCallBack {
+class SmartNotifsPresenter @Inject constructor(var smartNotifUseCase: SmartNotifUseCase/*, val smartNotifsView: SmartNotifsView*/) : SmartNotifCallBack {
 
 
     override fun onSuccess(smartNotifs: List<SmartNotif<*>>) {
-        smartNotifsView.displaySmartNotifs(smartNotifs.map { x -> SmartNotifViewModel(x) })
+        //smartNotifsView.displaySmartNotifs(smartNotifs.map { x -> SmartNotifViewModel(x) })
     }
 
     fun getSmartNotifs(){
