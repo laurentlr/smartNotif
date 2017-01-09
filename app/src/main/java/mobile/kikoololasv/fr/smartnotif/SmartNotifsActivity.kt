@@ -2,20 +2,28 @@ package mobile.kikoololasv.fr.smartnotif
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import javax.inject.Inject
 
 class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
-    override fun displaySmartNotifs(smartNotifsViewModel: List<SmartNotifViewModel>) {
-    }
+    @Inject
+    lateinit var presenter: SmartNotifsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_smart_notifs)
         //smartNotifsRecyclerView.adapter = SmartNotifsAdapter()
 
+        SMApplication.GRAPH.inject(this)
 
-        val presenter = SmartNotifsPresenter(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
         presenter.getSmartNotifs()
 
+    }
+
+    override fun displaySmartNotifs(smartNotifsViewModel: List<SmartNotifViewModel>) {
     }
 
 }

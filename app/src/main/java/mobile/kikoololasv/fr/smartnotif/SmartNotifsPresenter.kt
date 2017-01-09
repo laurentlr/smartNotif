@@ -1,6 +1,9 @@
 package mobile.kikoololasv.fr.smartnotif
 
-class SmartNotifsPresenter(val smartNotifsView: SmartNotifsView) : SmartNotifCallBack {
+import android.os.Handler
+import javax.inject.Inject
+
+class SmartNotifsPresenter @Inject constructor(var smartNotifUseCase: SmartNotifUseCase, val smartNotifsView: SmartNotifsView) : SmartNotifCallBack {
 
 
     override fun onSuccess(smartNotifs: List<SmartNotif<*>>) {
@@ -15,7 +18,7 @@ class SmartNotifsPresenter(val smartNotifsView: SmartNotifsView) : SmartNotifCal
 //        }
 
         //var useCase  = SmartNotifUseCase(this)
-        //Handler().post({ useCase.getSmartNotifs()})
+        Handler().post({ smartNotifUseCase.getSmartNotifs() })
     }
 
     override fun onError() {

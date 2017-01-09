@@ -6,7 +6,7 @@ class SMApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-       // GRAPH =
+        GRAPH = DaggerSmartNotifComponent.create()
     }
     companion object {
         lateinit var GRAPH : SmartNotifComponent
