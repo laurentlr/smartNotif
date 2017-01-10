@@ -2,6 +2,13 @@ package mobile.kikoololasv.fr.smartnotif
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.ViewGroup
+import mobile.kikoololasv.fr.smartnotif.view.SmartNotifItemView
+import mobile.kikoololasv.fr.smartnotif.view.SmartNotifViewHolder
+import org.jetbrains.anko.*
+import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
 
@@ -12,22 +19,23 @@ class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
         //setContentView(R.layout.activity_smart_notifs)
         //smartNotifsRecyclerView.adapter = SmartNotifsAdapter()
 
-//        verticalLayout {
-//            padding = dip(30)
-//            editText {
-//                hint = "Name"
-//                textSize = 24f
-//            }
-//            editText {
-//                hint = "Password"
-//                textSize = 24f
-//            }
-//            button("Login") {
-//                textSize = 26f
-//            }
-//        }
 
-        //recyclerView().adapter = SmartNotifsAdapter()
+        var smartNotifs = listOf(SmartNotif(title = "Go buy Omelette du fromage", creationDate = 1482239496000L, smartNotifStatus = SmartNotifStatus.PENDING, smartNotifevent = ScheduledEvent(date = 1482585096000L)), SmartNotif(title = "Go buy Omelette du fromage 2", creationDate = 1482239496000L, smartNotifStatus = SmartNotifStatus.PENDING, smartNotifevent = ScheduledEvent(date = 1482585096000L)))
+
+
+        frameLayout {
+            lparams {
+                width = matchParent
+                height = matchParent
+                bottomMargin = dip(10)
+                topMargin = dip(10)
+            }
+            recyclerView {
+                lparams(width = matchParent, height = matchParent)
+                layoutManager = LinearLayoutManager(ctx)
+                adapter = SmartNotifsAdapter(smartNotifs)
+            }
+        }
 
 
         presenter = SmartNotifsPresenter(this)
@@ -46,26 +54,15 @@ class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
 
 }
 
-//class SmartNotifsAdapter : RecyclerView.Adapter<SmartNotifsAdapter.SmartNotifsVH>() {
-//    override fun onBindViewHolder(holder: SmartNotifsVH?, position: Int) {
-//
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SmartNotifsVH? {
-//        val layoutInflater = LayoutInflater.from(parent.context)
-//        return SmartNotifsVH(layoutInflater.inflate(R.layout.main_item, parent, false))
-//    }
-//
-//
-//    override fun getItemCount(): Int {
-//    }
-//
-//    class SmartNotifsVH(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-//        val card = itemView.card
-//        val container = itemView.container
-//        val title = itemView.title
-//        val date = itemView.date
-//    }
-//}
+class SmartNotifsAdapter(var smartNotifs: List<SmartNotif<*>>) : RecyclerView.Adapter<SmartNotifViewHolder>() {
+
+    override fun onBindViewHolder(holder: SmartNotifViewHolder?, position: Int) = holder!!.bind(smartNotifs.get(position))
+
+    override fun getItemCount() = smartNotifs.count()
+
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = SmartNotifViewHolder(SmartNotifItemView().createView(AnkoContext.create(parent!!.context, parent)))
+
+
+}
 
 

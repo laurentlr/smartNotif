@@ -4,15 +4,15 @@ import javax.inject.Inject
 
 class SmartNotifUseCase @Inject constructor(var repository: SmartNotifsRepository) {
 
-    lateinit var callback: SmartNotifCallBack
+    //lateinit var callback: SmartNotifCallBack
 
     fun getSmartNotifs(){
-        try {
+        /*try {
             callback.onSuccess(repository.getSmartNotifs())
 
         } catch( e :GetSmartNotifsError){
             callback.onError()
-        }
+        }*/
     }
 
 }
