@@ -2,7 +2,9 @@ package mobile.kikoololasv.fr.smartnotif
 
 import javax.inject.Inject
 
-class SmartNotifUseCase @Inject constructor(var repository: SmartNotifsRepository, val callback: SmartNotifCallBack) {
+class SmartNotifUseCase @Inject constructor(var repository: SmartNotifsRepository) {
+
+    lateinit var callback: SmartNotifCallBack
 
     fun getSmartNotifs(){
         try {
