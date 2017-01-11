@@ -7,11 +7,6 @@ import javax.inject.Singleton
 @Module
 class SmartNotifModule{
 
-    @Singleton
-    @Provides
-    fun provideSmartNotifsUseCase(repository: SmartNotifsRepository): SmartNotifUseCase {
-        return SmartNotifUseCase(repository)
-    }
 
     @Singleton
     @Provides

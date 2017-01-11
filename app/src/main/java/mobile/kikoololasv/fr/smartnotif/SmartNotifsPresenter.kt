@@ -1,21 +1,18 @@
 package mobile.kikoololasv.fr.smartnotif
 
 import android.os.Handler
-import mobile.kikoololasv.fr.smartnotif.SMApplication.Companion.GRAPH
-import javax.inject.Inject
 
 class SmartNotifsPresenter(var smartNotifsView: SmartNotifsView) : SmartNotifCallBack {
 
-    @Inject
-    lateinit var smartNotifUseCase: SmartNotifUseCase
+    var smartNotifUseCase: SmartNotifUseCase
 
     init {
-        GRAPH.inject(this)
+        smartNotifUseCase = SmartNotifUseCase(this)
     }
 
 
     override fun onSuccess(smartNotifs: List<SmartNotif<*>>) {
-        //smartNotifsView.displaySmartNotifs(smartNotifs.map { x -> SmartNotifViewModel(x) })
+        smartNotifsView.displaySmartNotifs(smartNotifs.map { x -> SmartNotifViewModel(x) })
     }
 
     fun getSmartNotifs() {

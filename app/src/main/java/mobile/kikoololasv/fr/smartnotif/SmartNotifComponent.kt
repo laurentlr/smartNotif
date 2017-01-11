@@ -6,5 +6,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(SmartNotifModule::class))
 interface SmartNotifComponent {
-    fun inject(smartNotifsPresenter: SmartNotifsPresenter)
+    fun injectThatSMUSECASESHIT(smartNotifUseCase: SmartNotifUseCase)
+
 }

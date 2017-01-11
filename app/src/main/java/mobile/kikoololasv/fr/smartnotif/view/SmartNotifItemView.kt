@@ -2,15 +2,20 @@ package mobile.kikoololasv.fr.smartnotif.view
 
 import android.content.res.ColorStateList
 import android.graphics.Typeface.ITALIC
-import android.text.TextUtils
 import android.view.Gravity
 import android.view.ViewGroup
 import mobile.kikoololasv.fr.smartnotif.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 
+
 class SmartNotifItemView : AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>) = with(ui) {
+        val attrs = intArrayOf(android.R.attr.selectableItemBackground /* index 0 */)
+        val ta = ui.ctx.obtainStyledAttributes(attrs)
+        val drawableFromTheme = ta.getDrawable(0 /* index */)
+        ta.recycle()
+
         verticalLayout {
             lparams {
                 width = matchParent
@@ -19,10 +24,11 @@ class SmartNotifItemView : AnkoComponent<ViewGroup> {
             cardView {
                 cardElevation = 5f
                 cardBackgroundColor = ColorStateList.valueOf(android.R.color.holo_red_dark)
+                foreground = drawableFromTheme
+                isClickable = true
                 lparams {
                     width = matchParent
                     margin = dip(10)
-
                 }
 
                 verticalLayout {
@@ -36,7 +42,6 @@ class SmartNotifItemView : AnkoComponent<ViewGroup> {
                         }
                         id = R.id.title
                         singleLine = true
-                        ellipsize = TextUtils.TruncateAt.END
                         textSize = 20f
                     }
                     textView {

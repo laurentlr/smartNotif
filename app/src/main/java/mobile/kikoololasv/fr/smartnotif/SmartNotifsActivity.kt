@@ -14,15 +14,18 @@ class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
 
     lateinit var presenter: SmartNotifsPresenter
 
+    lateinit private var smartNotifRecyclerView: RecyclerView
+
+    lateinit private var adapter: SmartNotifsAdapter
+
+    lateinit private var smartNotifAdapter: SmartNotifsAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_smart_notifs)
-        //smartNotifsRecyclerView.adapter = SmartNotifsAdapter()
 
+        //var smartNotifs = listOf(SmartNotif(title = "Go buy Omelette du fromage", creationDate = 1482239496000L, smartNotifStatus = SmartNotifStatus.PENDING, smartNotifevent = ScheduledEvent(date = 1482585096000L)), SmartNotif(title = "Go buy Omelette du fromage 2", creationDate = 1482239496000L, smartNotifStatus = SmartNotifStatus.PENDING, smartNotifevent = ScheduledEvent(date = 1482585096000L)))
 
-        var smartNotifs = listOf(SmartNotif(title = "Go buy Omelette du fromage", creationDate = 1482239496000L, smartNotifStatus = SmartNotifStatus.PENDING, smartNotifevent = ScheduledEvent(date = 1482585096000L)), SmartNotif(title = "Go buy Omelette du fromage 2", creationDate = 1482239496000L, smartNotifStatus = SmartNotifStatus.PENDING, smartNotifevent = ScheduledEvent(date = 1482585096000L)))
-
-
+        smartNotifAdapter = SmartNotifsAdapter()
         frameLayout {
             lparams {
                 width = matchParent
@@ -30,16 +33,16 @@ class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
                 bottomMargin = dip(10)
                 topMargin = dip(10)
             }
-            recyclerView {
+            smartNotifRecyclerView = recyclerView {
                 lparams(width = matchParent, height = matchParent)
                 layoutManager = LinearLayoutManager(ctx)
-                adapter = SmartNotifsAdapter(smartNotifs)
+                adapter = smartNotifAdapter
+
+
             }
         }
 
-
         presenter = SmartNotifsPresenter(this)
-        //SMApplication.GRAPH.inject(this)
 
     }
 
@@ -50,15 +53,22 @@ class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
     }
 
     override fun displaySmartNotifs(smartNotifsViewModel: List<SmartNotifViewModel>) {
+        smartNotifAdapter.putData(smartNotifsViewModel)
     }
 
 }
 
-class SmartNotifsAdapter(var smartNotifs: List<SmartNotif<*>>) : RecyclerView.Adapter<SmartNotifViewHolder>() {
+class SmartNotifsAdapter : RecyclerView.Adapter<SmartNotifViewHolder>() {
+    private var smartNotifsViewmodel: List<SmartNotifViewModel> = emptyList()
 
-    override fun onBindViewHolder(holder: SmartNotifViewHolder?, position: Int) = holder!!.bind(smartNotifs.get(position))
+    fun putData(smartNotifs: List<SmartNotifViewModel>) {
+        smartNotifsViewmodel = smartNotifs
+        notifyDataSetChanged()
+    }
 
-    override fun getItemCount() = smartNotifs.count()
+    override fun onBindViewHolder(holder: SmartNotifViewHolder, position: Int) = holder.bind(smartNotifsViewmodel.get(position))
+
+    override fun getItemCount() = smartNotifsViewmodel.count()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = SmartNotifViewHolder(SmartNotifItemView().createView(AnkoContext.create(parent!!.context, parent)))
 

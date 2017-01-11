@@ -1,18 +1,25 @@
 package mobile.kikoololasv.fr.smartnotif
 
+import mobile.kikoololasv.fr.smartnotif.SMApplication.Companion.GRAPH
 import javax.inject.Inject
 
-class SmartNotifUseCase @Inject constructor(var repository: SmartNotifsRepository) {
+class SmartNotifUseCase(var callback: SmartNotifCallBack) {
 
-    //lateinit var callback: SmartNotifCallBack
+    @Inject
+    lateinit var repository: SmartNotifsRepository
 
-    fun getSmartNotifs(){
-        /*try {
+    init {
+        GRAPH.injectThatSMUSECASESHIT(this)
+    }
+
+    fun getSmartNotifs() {
+        try {
             callback.onSuccess(repository.getSmartNotifs())
 
-        } catch( e :GetSmartNotifsError){
+        } catch(e: GetSmartNotifsError) {
             callback.onError()
-        }*/
+        }
     }
+
 
 }
