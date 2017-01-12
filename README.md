@@ -16,3 +16,10 @@ Kotlin postfix code completion relies on platform changes in IntelliJ IDEA 2016.
  which does not include those changes.
  
  Android studio 2.3 => Ok but broke IDE UT start
+
+
+just check it out
+----------------------
+
+1. support annotation 
+2. junit parameters
