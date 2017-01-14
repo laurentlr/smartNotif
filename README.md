@@ -1,7 +1,7 @@
 # SmartNotifs
-[![Build Status](https://travis-ci.org/laurentlr/smartNotif.svg?branch=develop)](https://travis-ci.org/laurentlr/smartNotif)
+[![Build Status](https://travis-ci.org/laurentlr/smartNotif.svg?branch=master)](https://travis-ci.org/laurentlr/smartNotif)
 
-[![Coverage Status](https://coveralls.io/repos/github/laurentlr/smartNotif/badge.svg?branch=develop)](https://coveralls.io/github/laurentlr/smartNotif?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/laurentlr/smartNotif/badge.svg?branch=master)](https://coveralls.io/github/laurentlr/smartNotif?branch=master)
 
 Progressive dev feedback
 ----------------------
