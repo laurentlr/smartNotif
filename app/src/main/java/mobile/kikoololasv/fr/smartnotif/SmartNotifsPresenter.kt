@@ -1,6 +1,6 @@
 package mobile.kikoololasv.fr.smartnotif
 
-import android.os.Handler
+import org.jetbrains.anko.doAsync
 
 class SmartNotifsPresenter(var smartNotifsView: SmartNotifsView) : SmartNotifCallBack {
 
@@ -23,7 +23,7 @@ class SmartNotifsPresenter(var smartNotifsView: SmartNotifsView) : SmartNotifCal
 //        }
 
         //var useCase  = SmartNotifUseCase(this)
-        Handler().post({ smartNotifUseCase.getSmartNotifs() })
+        doAsync { smartNotifUseCase.getSmartNotifs() }
     }
 
     override fun onError() {
