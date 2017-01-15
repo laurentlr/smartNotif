@@ -2,9 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'checkstyle'
 apply from: 'test.gradle'
-
+apply plugin: 'checkstyle'
 
 android {
     compileSdkVersion 24
@@ -32,10 +31,6 @@ android {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:1.7.1'
-    testCompile 'com.nhaarman:mockito-kotlin:1.0.1'
 
     //DI
     compile 'com.google.dagger:dagger:2.8'
@@ -53,8 +48,15 @@ dependencies {
     compile "org.jetbrains.anko:anko-cardview-v7:$anko_version" // For appcompat-v7 bindings
     compile "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
 
+    //Facebook
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    //PLAY SERVICES
+    compile 'com.google.android.gms:play-services-base:10.0.1'
+
 
 }
+
 repositories {
     mavenCentral()
 }

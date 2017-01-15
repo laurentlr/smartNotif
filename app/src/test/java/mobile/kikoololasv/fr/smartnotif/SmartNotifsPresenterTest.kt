@@ -22,4 +22,5 @@ class SmartNotifsPresenterTest {
              assertThat(smartNotifs[index].title).isEqualTo(value.title)
          }*/
     }
+
 }
