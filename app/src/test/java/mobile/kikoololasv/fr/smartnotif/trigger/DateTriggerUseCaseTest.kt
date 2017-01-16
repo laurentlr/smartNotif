@@ -16,6 +16,7 @@ class DateTriggerUseCaseTest : Spek({
 
     describe("date trigger") {
 
+        given()
         GRAPH = mock()
         var dateTriggerUseCase = DateTriggerUseCase()
         dateTriggerUseCase.repo = mock()
