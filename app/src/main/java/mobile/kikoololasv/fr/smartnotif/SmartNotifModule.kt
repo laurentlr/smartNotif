@@ -6,7 +6,6 @@ import android.content.Context.NOTIFICATION_SERVICE
 import android.support.v7.app.NotificationCompat
 import dagger.Module
 import dagger.Provides
-import mobile.kikoololasv.fr.smartnotif.trigger.DateTriggerUseCase
 import javax.inject.Singleton
 
 

@@ -1,13 +1,14 @@
 package mobile.kikoololasv.fr.smartnotif
 
 import dagger.Component
-import mobile.kikoololasv.fr.smartnotif.trigger.DateTriggerUseCase
+import fr.kikoololasv.mobile.domain.usecase.DateTriggerUseCase
+import fr.kikoololasv.mobile.domain.usecase.GetSmartNotifListUseCase
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = arrayOf(SmartNotifModule::class))
 interface SmartNotifComponent {
-    fun injectThatSMUSECASESHIT(smartNotifUseCase: SmartNotifUseCase)
+    fun injectThatSMUSECASESHIT(smartNotifUseCase: GetSmartNotifListUseCase)
     fun injectThat(dateTriggerUseCase: DateTriggerUseCase)
 
 }

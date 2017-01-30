@@ -24,11 +24,7 @@
 
         </activity>
 
-        <receiver android:name=".trigger.DateTriggerBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.TIME_TICK"/>
-            </intent-filter>
-        </receiver>
+        <receiver android:name=".trigger.DateTriggerBroadcastReceiver"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

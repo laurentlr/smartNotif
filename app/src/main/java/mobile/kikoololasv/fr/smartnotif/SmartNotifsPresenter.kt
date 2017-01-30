@@ -1,13 +1,17 @@
 package mobile.kikoololasv.fr.smartnotif
 
+import fr.kikoololasv.mobile.domain.entity.SmartNotif
+import fr.kikoololasv.mobile.domain.usecase.GetSmartNotifListUseCase
 import org.jetbrains.anko.doAsync
+import javax.inject.Inject
 
-class SmartNotifsPresenter(var smartNotifsView: SmartNotifsView) : SmartNotifCallBack {
+class SmartNotifsPresenter(var smartNotifsView: SmartNotifsView) : GetSmartNotifListUseCase.CallBack {
 
-    var smartNotifUseCase: SmartNotifUseCase
+    @Inject
+    lateinit var smartNotifUseCase: GetSmartNotifListUseCase
 
     init {
-        smartNotifUseCase = SmartNotifUseCase(this)
+        smartNotifUseCase = GetSmartNotifListUseCase(this)
     }
 
 

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply from: 'test.gradle'
+apply from: '../test.gradle'
 apply plugin: 'checkstyle'
 
 android {
@@ -29,6 +29,8 @@ android {
 }
 
 dependencies {
+    compile project(':domain')
+
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

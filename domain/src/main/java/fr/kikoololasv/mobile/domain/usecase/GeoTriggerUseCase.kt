@@ -1,6 +1,6 @@
-package mobile.kikoololasv.fr.smartnotif.trigger
+package fr.kikoololasv.mobile.domain.usecase
 
-import mobile.kikoololasv.fr.smartnotif.SmartNotif
+import fr.kikoololasv.mobile.domain.entity.SmartNotif
 
 
 class GeoTriggerUseCase() :Trigger{

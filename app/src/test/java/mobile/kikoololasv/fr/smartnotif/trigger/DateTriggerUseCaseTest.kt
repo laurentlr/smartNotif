@@ -8,8 +8,6 @@ import com.nhaarman.mockito_kotlin.verify
 import io.kotlintest.mock.`when`
 import mobile.kikoololasv.fr.smartnotif.SMApplication.Companion.GRAPH
 import mobile.kikoololasv.fr.smartnotif.ScheduledEvent
-import mobile.kikoololasv.fr.smartnotif.SmartNotif
-import mobile.kikoololasv.fr.smartnotif.SmartNotifStatus
 import org.jetbrains.spek.api.Spek
 
 class DateTriggerUseCaseTest : Spek({

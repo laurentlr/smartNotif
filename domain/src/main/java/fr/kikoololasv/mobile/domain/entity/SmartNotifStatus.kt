@@ -1,4 +1,4 @@
-package mobile.kikoololasv.fr.smartnotif
+package fr.kikoololasv.mobile.domain.entity
 
 enum class SmartNotifStatus {
     PENDING,DONE

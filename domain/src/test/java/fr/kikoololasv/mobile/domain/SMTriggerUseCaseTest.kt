@@ -1,5 +1,5 @@
-package mobile.kikoololasv.fr.smartnotif
-
+package fr.kikoololasv.mobile.domain
+import fr.kikoololasv.mobile.domain.usecase.GeoTriggerUseCase
 import org.jetbrains.spek.api.Spek
 class SMTriggerUseCaseTest : Spek({
 

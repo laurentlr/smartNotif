@@ -28,8 +28,7 @@ class SMApplication : Application() {
         calendar.set(Calendar.MINUTE, 49)
 
 
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                1000 * 30, alarmIntent)
+        alarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),alarmIntent)
     }
 
     companion object {
