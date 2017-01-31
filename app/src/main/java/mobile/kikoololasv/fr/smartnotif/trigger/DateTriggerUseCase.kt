@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class DateTriggerUseCase(){
 
-    @Inject
+    /*@Inject
     lateinit var repo : SmartNotifsRepository
 
     @Inject
@@ -29,6 +29,6 @@ class DateTriggerUseCase(){
         for (n in notifs) {
             triggerCallBack.trigger(n)
         }
-    }
+    }*/
 
 }

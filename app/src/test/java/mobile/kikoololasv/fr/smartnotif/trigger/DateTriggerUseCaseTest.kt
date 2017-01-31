@@ -12,7 +12,7 @@ import mobile.kikoololasv.fr.smartnotif.SmartNotif
 import mobile.kikoololasv.fr.smartnotif.SmartNotifStatus
 import org.jetbrains.spek.api.Spek
 
-class DateTriggerUseCaseTest : Spek({
+class DateTriggerUseCaseTest /*: Spek({
 
     describe("date trigger") {
 
@@ -40,4 +40,4 @@ class DateTriggerUseCaseTest : Spek({
             }
         }
     }
-})
+})*/

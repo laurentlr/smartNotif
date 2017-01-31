@@ -1,9 +1,10 @@
 package mobile.kikoololasv.fr.smartnotif
 
+import io.reactivex.Observable
 import mobile.kikoololasv.fr.smartnotif.SMApplication.Companion.GRAPH
 import javax.inject.Inject
 
-class SmartNotifUseCase(var callback: SmartNotifCallBack) {
+class SmartNotifUseCase {
 
     @Inject
     lateinit var repository: SmartNotifsRepository
@@ -12,14 +13,8 @@ class SmartNotifUseCase(var callback: SmartNotifCallBack) {
         GRAPH.injectThatSMUSECASESHIT(this)
     }
 
-    fun getSmartNotifs() {
-        try {
-            callback.onSuccess(repository.getSmartNotifs())
-
-        } catch(e: GetSmartNotifsError) {
-            callback.onError()
-        }
+    fun getSmartNotifs() : Observable<List<SmartNotif<*>>> {
+       return repository.getSmartNotifs()
     }
-
 
 }

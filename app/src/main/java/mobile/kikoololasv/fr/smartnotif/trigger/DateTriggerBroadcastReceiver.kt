@@ -10,7 +10,7 @@ class DateTriggerBroadcastReceiver : BroadcastReceiver() {
     private var dateTriggerUseCase: DateTriggerUseCase = DateTriggerUseCase()
 
     override fun onReceive(p0: Context?, p1: Intent?) {
-            dateTriggerUseCase.checkDate(Calendar.getInstance().timeInMillis)
+            //dateTriggerUseCase.checkDate(Calendar.getInstance().timeInMillis)
 
     }
 }
