@@ -56,23 +56,25 @@ class SmartNotifsActivity : AppCompatActivity(), SmartNotifsView {
         smartNotifAdapter.putData(smartNotifsViewModel)
     }
 
-}
+    class SmartNotifsAdapter : RecyclerView.Adapter<SmartNotifViewHolder>() {
+        private var smartNotifsViewmodel: List<SmartNotifViewModel> = emptyList()
 
-class SmartNotifsAdapter : RecyclerView.Adapter<SmartNotifViewHolder>() {
-    private var smartNotifsViewmodel: List<SmartNotifViewModel> = emptyList()
+        fun putData(smartNotifs: List<SmartNotifViewModel>) {
+            smartNotifsViewmodel = smartNotifs
+            notifyDataSetChanged()
+        }
 
-    fun putData(smartNotifs: List<SmartNotifViewModel>) {
-        smartNotifsViewmodel = smartNotifs
-        notifyDataSetChanged()
+        override fun onBindViewHolder(holder: SmartNotifViewHolder, position: Int) = holder.bind(smartNotifsViewmodel[position])
+
+        override fun getItemCount() = smartNotifsViewmodel.count()
+
+        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = SmartNotifViewHolder(SmartNotifItemView().createView(AnkoContext.create(parent!!.context, parent)))
+
+
     }
 
-    override fun onBindViewHolder(holder: SmartNotifViewHolder, position: Int) = holder.bind(smartNotifsViewmodel.get(position))
-
-    override fun getItemCount() = smartNotifsViewmodel.count()
-
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = SmartNotifViewHolder(SmartNotifItemView().createView(AnkoContext.create(parent!!.context, parent)))
-
-
 }
+
+
 
 
