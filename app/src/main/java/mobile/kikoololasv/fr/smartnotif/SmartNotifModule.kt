@@ -12,8 +12,8 @@ class SmartNotifModule(val context: Context) {
 
     @Singleton
     @Provides
-    fun provideSMUC(): SmartNotifUseCase {
-        return SmartNotifUseCase()
+    fun provideSMUC(repo: SmartNotifsRepository): SmartNotifUseCase {
+        return SmartNotifUseCase(repo)
     }
 
     @Singleton

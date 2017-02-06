@@ -1,40 +1,37 @@
 package mobile.kikoololasv.fr.smartnotif
 
-import org.junit.Test
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.verify
+import io.reactivex.Observable
+import io.reactivex.observers.TestObserver
+import org.assertj.core.api.Assertions.assertThat
+import org.jetbrains.spek.api.Spek
+import org.mockito.BDDMockito
+
+class SmartNotifUseCaseTest : Spek({
+
+    describe("a SmartNotif") {
+
+        val repo: SmartNotifsRepository = mock()
+        val smartNotif = SmartNotifUseCase(repo)
+        var smartNotifs: Observable<List<SmartNotif<*>>>
+        val testObserver = TestObserver<List<SmartNotif<*>>>()
+        val aSmartNotif = SmartNotif("title", 123, SmartNotifStatus.DONE, null)
+        BDDMockito.given(repo.getSmartNotifs()).willReturn(Observable.just(listOf(aSmartNotif)))
+
+        on("get smartnotifs") {
+            smartNotifs = smartNotif.getSmartNotifs()
+            smartNotifs.subscribe(testObserver)
 
 
-class SmartNotifUseCaseTest {
+            it("should call repository") {
+                verify(smartNotif.repository).getSmartNotifs()
+            }
 
-    /*private var repo: SmartNotifsRepository = mock()
-
-    private lateinit var smartNotifUseCase: SmartNotifUseCase
-
-    private val smartNotifCallBack: SmartNotifCallBack = mock()
-*/
-    @Test
-    fun getSmartNotifs() {
-        /*smartNotifUseCase = SmartNotifUseCase(repo)
-
-        var list = listOf(SmartNotif(title = "Go buy Omelette du fromage",creationDate = 1482239496000L,smartNotifStatus = SmartNotifStatus.PENDING,smartNotifevent = ScheduledEvent(date = 1482585096000L)))
-        given(repo.getSmartNotifs()).willReturn(list)
-
-        smartNotifUseCase.getSmartNotifs()
-
-        verify(repo).getSmartNotifs()
-        verify(smartNotifCallBack).onSuccess(list)*/
+            it("and should return the smartNotif of the repository") {
+                testObserver.assertComplete()
+                assertThat(testObserver.values()[0][0].title).isEqualTo("title")
+            }
+        }
     }
-
-/*
-    @Test
-    fun getSmartNotifsWhenError() {
-        smartNotifUseCase = SmartNotifUseCase(repo)
-        given(repo.getSmartNotifs()).willThrow(GetSmartNotifsError())
-
-        smartNotifUseCase.getSmartNotifs()
-
-        verify(repo).getSmartNotifs()
-        verify(smartNotifCallBack).onError()
-
-
-    }*/
-}
+})

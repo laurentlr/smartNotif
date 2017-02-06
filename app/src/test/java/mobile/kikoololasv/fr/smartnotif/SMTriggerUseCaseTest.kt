@@ -11,11 +11,11 @@ class SMTriggerUseCaseTest : Spek({
 
         on("notification") {
             triggerUseCase.trigger()
+            it("should execute action on its geofencing executor") {
+            }
 
         }
 
-        it("should execute action on its geofencing executor") {
-        }
     }
 
 })

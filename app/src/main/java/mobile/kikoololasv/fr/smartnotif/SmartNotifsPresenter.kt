@@ -7,14 +7,19 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.*
+import mobile.kikoololasv.fr.smartnotif.SMApplication.Companion.GRAPH
+import javax.inject.Inject
 
 class SmartNotifsPresenter(var smartNotifsView: SmartNotifsView) : SmartNotifCallBack {
 
     val cd = CompositeDisposable()
 
-    var smartNotifUseCase = SmartNotifUseCase()
+    @Inject
+    lateinit var smartNotifUseCase : SmartNotifUseCase
 
+    init {
+        GRAPH.injectThat(this)
+    }
 
     override fun onSuccess(smartNotifs: List<SmartNotif<*>>) {
 

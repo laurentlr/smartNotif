@@ -9,5 +9,6 @@ import javax.inject.Singleton
 interface SmartNotifComponent {
     fun injectThatSMUSECASESHIT(smartNotifUseCase: SmartNotifUseCase)
     fun injectThat(dateTriggerUseCase: DateTriggerUseCase)
+    fun injectThat(presenter: SmartNotifsPresenter)
 
 }
